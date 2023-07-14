@@ -4,6 +4,12 @@ import { useSelector } from 'react-redux'
 import { selectCurrentUser } from '../feautures/users/authSlice'
 
 function Home() {
+  const user = useSelector(selectCurrentUser)
+  console.log(user)
+  let mensaje = ""
+  if (user) {
+    mensaje = <p>bienvenido {`${user.nombre }  ${user.apellido}`}</p>
+  }
   return (
     <div>
         <h1>Examen Recuperatorio</h1>
@@ -11,6 +17,7 @@ function Home() {
         <h2>Lucas Gabriel Cabrera</h2>
         <h3>Para rendir en el primer llamado de la mesa de febrero - marzo 2023</h3>
         <Link to='/users'>Ir a la gestión de usuarios</Link>
+        {mensaje}
     </div>
   )
 }
