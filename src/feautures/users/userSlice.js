@@ -9,7 +9,7 @@ const initialState = {
 }
 
 
-const URL_BASE = process.env.REACT_APP_URI_API + `/usuarios`
+const URL_BASE = process.env.REACT_APP_URI_API + `/usuarios/`
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
     try {

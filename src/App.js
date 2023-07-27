@@ -45,7 +45,7 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='/home' element={<Home/>} />
           <Route path='/users' element={<ProtectedRoute><Users/></ProtectedRoute>}/>
-          <Route path='/edit-user/:id' element={<UserForm/>}/>
+          <Route path='/edit-user/:id' element={<ProtectedRoute><UserForm/></ProtectedRoute>}/>
           <Route path='/newuser' element={<UserForm/>}/>
           <Route path='*' element= {<NotFoundRoute/>}/>
           <Route path='/login' element= {<Login/>}/>

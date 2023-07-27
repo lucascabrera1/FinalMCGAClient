@@ -123,7 +123,11 @@ function UserForm() {
             console.log(users)
             if (params.id) {
                 const userFounded = await (dispatch (FetchUser(params.id)).unwrap())
-                const userfnac = {...userFounded, fechanacimiento : userFounded.fechanacimiento.substring(0, 10)}
+                const userfnac = {
+                    ...userFounded, 
+                    fechanacimiento : userFounded.fechanacimiento.substring(0, 10),
+                    contraseña: ''
+                }
                 console.log(userfnac)
                 reset(userfnac)
             }
