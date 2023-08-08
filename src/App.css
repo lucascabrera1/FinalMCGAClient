@@ -60,3 +60,8 @@ navbar ul li{
     transform: rotate(360deg);
   }
 }
+
+.error {
+  color: red;
+  
+}

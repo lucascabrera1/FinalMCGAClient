@@ -5,9 +5,6 @@ import App from './App';
 import { Provider } from 'react-redux';
 import {store} from './App/store.js';
 
-
-//store.dispatch(fetchUsers())
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -17,4 +14,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-

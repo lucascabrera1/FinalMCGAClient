@@ -4,12 +4,6 @@ import axios from 'axios'
 const urlApi = process.env.REACT_APP_URI_API
 console.log(urlApi)
 
-/* const initialState = {
-    data:[],
-    status: "idle",
-    error: null
-} */
-
 export const login = createAsyncThunk('auth/login', async ({email, contraseña}) => {
     console.log(urlApi)
     const url = `${urlApi}/signin`
@@ -48,9 +42,6 @@ export const authSlice = createSlice ({
 })
 
 export const {logOut} = authSlice.actions
-
 export default authSlice.reducer
-
 export const selectCurrentToken = (state) => state.auth.accessToken
-
 export const selectCurrentUser = (state) => state.auth?.user

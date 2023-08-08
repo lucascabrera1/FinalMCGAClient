@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {SaveUser, UpdateUser} from '../feautures/users/userSlice'
-//import {v4 as uuid} from 'uuid'
-import { nanoid } from '@reduxjs/toolkit'
+import {SaveUser, UpdateUser, FetchUser} from '../feautures/users/userSlice'
 import {useNavigate, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
-import { FetchUser } from '../feautures/users/userSlice'
 import Button from './Common/Button'
 import Input from './Common/Input'
 import styles from './style.module.css'
@@ -13,31 +10,10 @@ import styles from './style.module.css'
 function UserForm() {
 
     const {register, handleSubmit, reset, getValues, formState : {errors}} = useForm()
-
-    const [id,setId] = useState()
-
-    const userInitial = {
-        nombre: '',
-        apellido: '',
-        dni: '',
-        nacionalidad: '',
-        contraseña: '',
-        email: '',
-        fechanacimiento: '',
-        edad: ''
-    }
-
-    const [user, setUser] = useState(userInitial)
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const params = useParams();
     const users = useSelector(state => state.users);
-    const nations = useSelector(state => state.nations)
-
-    const onSubmit = data => console.log(data)
-
-    const fnac = data => data =  user.fechanacimiento
 
     const CalcularEdad = fnac => {
         console.log(fnac)
@@ -57,20 +33,11 @@ function UserForm() {
             }
         }
         return edad
-    } 
-    
-
-    const handleChange = (e) => {
-        console.log(e.target.name)
-        setUser({
-            ...user,
-            [e.target.name] : e.target.value,
-        })
     }
 
     const handleBlur = (e) => {
         console.log(getValues())
-        if (e.target.name == 'fechanacimiento') {
+        if (e.target.name === 'fechanacimiento') {
             let edad = CalcularEdad(e.target.value)
             console.log( edad)
             reset({
@@ -94,12 +61,6 @@ function UserForm() {
             }
             
         } else {
-            /*dispatch(SaveUser({
-                ...user,
-                //_id: uuid(),
-                //_id: nanoid()
-                _id : users.length + 1
-            }))*/
             console.log(data)
             try {
                 await dispatch(SaveUser(data)).unwrap()
@@ -108,12 +69,8 @@ function UserForm() {
             } catch (error) {
                 console.error(error)
             }
-            
         }
-
-        //navigate('/')
     }
-
 
     useEffect ( ()=> {
         async function fetchUser () {

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { DeleteUser, selectAllUsers, getUsersStatus, fetchUsers } from '../feautures/users/userSlice'
@@ -12,7 +12,7 @@ function UsersList() {
     const status = useSelector(getUsersStatus)
 
     useEffect(()=>{
-      if (status=="idle")
+      if (status==="idle")
         dispatch(fetchUsers())
     },[status])
     
