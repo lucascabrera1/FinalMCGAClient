@@ -14,7 +14,7 @@ function App() {
       <header className='App-header'><h1>Examen Final Modelos computacionales de Gestión Administrativa</h1></header>
       <div className='items-center justify-center'>
       <BrowserRouter>
-      <NavBar/>
+        <NavBar/>
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/home' element={<Home/>} />

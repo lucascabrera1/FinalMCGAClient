@@ -1,8 +1,7 @@
-
+import { useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { DeleteUser, selectAllUsers, getUsersStatus, fetchUsers } from '../feautures/users/userSlice'
-import { useEffect } from 'react';
 import Button from './Common/Button';
 import styles from './style.module.css'
 

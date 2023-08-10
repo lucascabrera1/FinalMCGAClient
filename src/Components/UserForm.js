@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {SaveUser, UpdateUser, FetchUser} from '../feautures/users/userSlice'
 import {useNavigate, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
+import {SaveUser, UpdateUser, FetchUser} from '../feautures/users/userSlice'
 import Button from './Common/Button'
 import Input from './Common/Input'
 import styles from './style.module.css'
@@ -145,7 +145,6 @@ function UserForm() {
                         minLength: "mínimo 6 caracteres",
                     }}
                 />
-                
                 <br/><br/>
                 <Input
                     type='email'
@@ -160,43 +159,38 @@ function UserForm() {
                         required: "el correo electrónico es obligatorio"
                     }}
                 />
-                
                 <br/><br/>
-                    <Input
-                        onBlur={handleBlur}
-                        type='date'
-                        name='fechanacimiento' 
-                        label='fechanacimiento'
-                        register={register}
-                        registerOptions= {{
-                            required: true, min: "1958-01-01",max: "2004-12-31"
-                        }}
-                        errors= {errors}
-                        optionMsgErrors={{
-                            required: "la fecha de nacimiento es requerida",
-                            maxLength: "no puede ser inferior a 1958",
-                            minLength: "no puede ser superior a 2004",
-                        }}
-                    />
-
-                
-                <br/><br/>
-            
-                
                 <Input
-                        type='text'
-                        name='nacionalidad' 
-                        label='Nacionalidad'
-                        register={register}
-                        registerOptions= {{
-                            required: true, pattern: /^[A-Za-z]+$/i
-                        }}
-                        errors= {errors}
-                        optionMsgErrors={{
-                            required: "la nacionalidad es requerida",
-                            pattern: "solo caracteres de la a a la z sin espaciados"
-                        }}
-                    />
+                    onBlur={handleBlur}
+                    type='date'
+                    name='fechanacimiento' 
+                    label='fechanacimiento'
+                    register={register}
+                    registerOptions= {{
+                        required: true, min: "1958-01-01",max: "2004-12-31"
+                    }}
+                    errors= {errors}
+                    optionMsgErrors={{
+                        required: "la fecha de nacimiento es requerida",
+                        maxLength: "no puede ser inferior a 1958",
+                        minLength: "no puede ser superior a 2004",
+                    }}
+                />
+                <br/><br/>
+                <Input
+                    type='text'
+                    name='nacionalidad' 
+                    label='Nacionalidad'
+                    register={register}
+                    registerOptions= {{
+                        required: true, pattern: /^[A-Za-z]+$/i
+                    }}
+                    errors= {errors}
+                    optionMsgErrors={{
+                        required: "la nacionalidad es requerida",
+                        pattern: "solo caracteres de la a a la z sin espaciados"
+                    }}
+                />
                 <br/><br/>
                 <Input
                     type='number'
@@ -209,7 +203,6 @@ function UserForm() {
                     disabled
                 />
                 <br/><br/>
-
                 <Input
                     type='password'
                     name='contraseña'
@@ -225,7 +218,6 @@ function UserForm() {
                     }}
                 />
                 <br/><br/>
-                
                 <br/><br/>
                 <Button type="submit" className={`${styles.bgindigo600} ${styles.py1} ${styles.px2}`}>Save</Button>
             </form>

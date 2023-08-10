@@ -70,41 +70,40 @@ export const userSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-            builder
-            .addCase(fetchUsers.fulfilled, (state, action) => {
-                console.log(state)
-                state.status = "completed"
-                state.data = action.payload
+        builder
+        .addCase(fetchUsers.fulfilled, (state, action) => {
+            console.log(state)
+            state.status = "completed"
+            state.data = action.payload
+        })
+        .addCase(SaveUser.fulfilled, (state, action) => {
+            console.log('llega al save user')
+            state.data.push(action.payload)
+        })
+        .addCase(DeleteUser.fulfilled, (state, action) => {
+            state.data = state.data.filter( (elem)=> {
+                return elem._id !== action.payload._id
             })
-            .addCase(SaveUser.fulfilled, (state, action) => {
-                console.log('llega al save user')
-                state.data.push(action.payload)
+        })
+        .addCase(UpdateUser.fulfilled, (state, action) => {
+            state.data = state.data.map(item => {
+                if (item._id === action.payload._id){
+                    return action.payload
+                } else {
+                    return item
+                }
             })
-            .addCase(DeleteUser.fulfilled, (state, action) => {
-                state.data = state.data.filter( (elem)=> {
-                    return elem._id !== action.payload._id
-                })
+            console.log(action.payload)
+        }) 
+        .addCase(FetchUser.fulfilled, (state, action) => {
+            state.data = state.data.map(item => {
+                if (item._id === action.payload._id) {
+                    return action.payload
+                } else {
+                    return item
+                }
             })
-            .addCase(UpdateUser.fulfilled, (state, action) => {
-                state.data = state.data.map(item => {
-                    if (item._id === action.payload._id){
-                        return action.payload
-                    } else {
-                        return item
-                    }
-                })
-                console.log(action.payload)
-            }) 
-            .addCase(FetchUser.fulfilled, (state, action) => {
-                state.data = state.data.map(item => {
-                    if (item._id === action.payload._id) {
-                        return action.payload
-                    } else {
-                        return item
-                    }
-                })
-            })
-        }
+        })}
     }
 )
 
